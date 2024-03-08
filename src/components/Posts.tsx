@@ -19,11 +19,8 @@ type singleDataTypes = {
   reactions: number;
 };
 const Posts = ({ setData, data }: any) => {
-  let refetch = "";
-
   const [imageUrl, setImageUrl] = useState([]);
 
-  console.log(refetch);
   useEffect(() => {
     const apiUrl = "/api/posts";
 
@@ -34,17 +31,7 @@ const Posts = ({ setData, data }: any) => {
         console.log(data);
       })
       .catch((error) => console.log(error));
-
-    // axios
-    //   .get(apiUrl)
-    //   .then((response) => {
-    //     setImageUrl(response.data.map((image: any) => image.urls.regular));
-    //     console.log(response.data?.urls);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching image:", error);
-    //   });
-  }, [refetch]);
+  }, []);
 
   // useEffect(() => {
   //   axios
