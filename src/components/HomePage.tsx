@@ -8,61 +8,86 @@ import Vector from "../asset/Vector.png";
 import trends from "../asset/likes.png";
 import search from "../asset/search.png";
 import Link from "next/link";
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import profilepic from "../asset/profilepic.jpeg";
 import CreateModal from "./createModal";
 
 const HomePage = () => {
-    const [modal, setModal] = useState('');
-    const [data, setData] = useState([]);
+  const [modal, setModal] = useState("");
+  const [data, setData] = useState([]);
+  const [open, setOpen] = useState(Boolean);
 
-    const refetchData= ()=>{
-        const apiUrl ='/api/posts' ;
-    
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const refetchData = () => {
+    const apiUrl = "/api/posts";
 
     fetch(apiUrl)
-    .then((res)=> res.json())
-    .then(data=> {setData(data);
-    console.log(data);})
-    .catch((error)=> console.log(error))
-    }
-    
-    return ( <Layout>
-        <div className="flex bg-white place-content-around  min-w-full items-center p-4">
-            <div>
-                < Image src={LOGO} alt=""/>
-            </div>
-            <div className="relative">
-                <Image src={search} alt="" className="absolute left-2 top-6" />
-                <input type="text" placeholder="search"className="px-8 py-4 bg-gray-200 border-2 rounded-md border-solid border-gray-200"/>
-            </div>
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  };
 
-            <div className="flex h-6 space-x-4 " >
-                <Image src={homeActive} alt=""/>
-                <Image src={Vector} alt=""/>
-                <Image src={trends} alt=""/>
-                <button onClick={()=>{setModal('modal1')}}><AddBoxOutlinedIcon/></button>
-                <div className="rounded-full cursor-pointer"><Link href="/profile"><Image className="rounded-full" src={profilepic} alt="" width={22}/></Link></div>
-                
-            </div>
+  return (
+    <Layout>
+      <div className="flex bg-white place-content-around  min-w-full items-center p-4">
+        <div>
+          <Image src={LOGO} alt="" />
         </div>
-        <div className="relative "><CreateModal setModal={setModal} modal={modal} refetchData={refetchData}/></div>
-        <div className="grid grid-cols-3 gap-8">
-            <div></div>
-<<<<<<< HEAD
-            <div>
-                <Posts/>
-=======
-            <div >
-                <Posts setData={setData} data={data}/>
->>>>>>> 8a9dc26 (create post implemented)
-            
-            </div>
-            <div>
-                sidecontents
-            </div>
+        <div className="relative">
+          <Image src={search} alt="" className="absolute left-2 top-6" />
+          <input
+            type="text"
+            placeholder="search"
+            className="px-8 py-4 bg-gray-200 border-2 rounded-md border-solid border-gray-200"
+          />
         </div>
-    </Layout> );
-}
- 
+
+        <div className="flex h-6 space-x-4 ">
+          <Image src={homeActive} alt="" />
+          <Image src={Vector} alt="" />
+          <Image src={trends} alt="" />
+          <button
+            onClick={() => {
+              setModal("modal1"), handleOpen();
+            }}
+          >
+            <AddBoxOutlinedIcon />
+          </button>
+          <div className="rounded-full cursor-pointer">
+            <Link href="/profile">
+              <Image
+                className="rounded-full"
+                src={profilepic}
+                alt=""
+                width={22}
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="relative ">
+        <CreateModal
+          open={open}
+          handleClose={handleClose}
+          setModal={setModal}
+          modal={modal}
+          refetchData={refetchData}
+        />
+      </div>
+      <div className="grid grid-cols-3 gap-8">
+        <div></div>
+        <div>
+          <Posts setData={setData} data={data} />
+        </div>
+        <div>sidecontents</div>
+      </div>
+    </Layout>
+  );
+};
+
 export default HomePage;
