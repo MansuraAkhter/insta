@@ -6,6 +6,15 @@ import trends from "../asset/likes.png";
 import add from "../asset/add.png";
 import likes from "../asset/likes.png";
 import search from "../asset/search.png";
+<<<<<<< HEAD
+=======
+import Link from "next/link";
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import Modal from "@mui/material/Modal";
+import { useState } from "react";
+import { Box, Typography } from "@mui/material";
+import CreateModal from "./createModal";
+>>>>>>> 8a9dc26 (create post implemented)
 
 const Layout = ({
     children,   
@@ -13,8 +22,12 @@ const Layout = ({
     children: React.ReactNode
     
   }) => {
+  
+
+  
     return ( 
     <div>
+<<<<<<< HEAD
         <div className="flex bg-white place-content-around  min-w-full items-center p-4">
             <div>
                 < Image src={LOGO} alt=""/>
@@ -32,6 +45,10 @@ const Layout = ({
                 <Image src={likes} alt=""/>
             </div>
         </div>
+=======
+        
+        
+>>>>>>> 8a9dc26 (create post implemented)
     <div>{children}</div>
     </div> );
 }

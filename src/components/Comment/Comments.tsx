@@ -59,8 +59,15 @@ export default function Comments({id, title, image, onSubmit, username, handleTo
       console.log(selectedPostId)
       
       setComment(filteredComments)
+<<<<<<< HEAD
     },[selectedPostId])
    // console.log(selectedPostId)
+=======
+      //const pp = data?.filter((comment: singleDataTypes) => comment?.postId === id)
+
+    },[])
+
+>>>>>>> refs/rewritten/with-comment
     // Function to check if at least one letter is typed
   const isLetterTyped = (text: string) => {
     return text.trim().length > 0;
