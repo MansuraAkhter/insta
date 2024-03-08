@@ -1,4 +1,3 @@
-import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BsChat, BsSend } from "react-icons/bs";
@@ -19,10 +18,12 @@ type singleDataTypes = {
   imageUrl: string;
   reactions: number;
 };
-const Posts = () => {
-  const [data, setData] = useState([]);
+const Posts = ({ setData, data }: any) => {
+  let refetch = "";
+
   const [imageUrl, setImageUrl] = useState([]);
 
+  console.log(refetch);
   useEffect(() => {
     const apiUrl = "/api/posts";
 
@@ -43,7 +44,7 @@ const Posts = () => {
     //   .catch((error) => {
     //     console.error("Error fetching image:", error);
     //   });
-  }, []);
+  }, [refetch]);
 
   // useEffect(() => {
   //   axios
