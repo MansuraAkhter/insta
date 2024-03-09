@@ -16,8 +16,7 @@ const HomePage = () => {
   const [modal, setModal] = useState("");
   const [data, setData] = useState([]);
   const [open, setOpen] = useState(Boolean);
-  const [userName, setUserName] =useState("");
-
+  
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -86,7 +85,7 @@ const HomePage = () => {
       <div className="grid grid-cols-3 gap-8">
         <div></div>
         <div>
-          <Posts setData={setData} data={data} userName={userName} />
+          <Posts setData={setData} data={data}  />
         </div>
         <div></div>
       </div>
