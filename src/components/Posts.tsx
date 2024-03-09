@@ -25,9 +25,10 @@ export type singleDataTypes = {
   username: string;
   imageUrl: string;
   reactions: number;
+  userName:string;
 };
 
-const Posts = ({ setData, data }: any) => {
+const Posts = ({ setData, data,userName }: any) => {
   // const [data, setData] = useState([]);
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [submittedComments, setSubmittedComments] = useState<string[]>([]);
@@ -63,6 +64,11 @@ const Posts = ({ setData, data }: any) => {
       })
       .catch((error) => console.log(error));
   }, [refetch]);
+
+  useEffect(()=>{
+    console.log(userName)
+    data.filter((dat:any)=> dat.username ===userName)
+  },[userName])
 
   const handleSubmitComment = (formData: { singleComment: string }) => {
     // Handle your form submission logic here, e.g., sending the comment to the server

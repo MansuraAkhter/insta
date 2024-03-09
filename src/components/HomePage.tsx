@@ -16,12 +16,15 @@ const HomePage = () => {
   const [modal, setModal] = useState("");
   const [data, setData] = useState([]);
   const [open, setOpen] = useState(Boolean);
+  const [userName, setUserName] =useState("");
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const refetchData = () => {
     const apiUrl = "/api/posts";
+
+   
 
     fetch(apiUrl)
       .then((res) => res.json())
@@ -34,20 +37,21 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <div className="flex bg-white place-content-around  min-w-full items-center p-4">
+      <div className="md:flex-row flex bg-white place-content-around  min-w-full items-center p-4 flex-col">
         <div>
           <Image src={LOGO} alt="" />
         </div>
-        <div className="relative">
+        {/* <div className="relative m-2 md:0">
           <Image src={search} alt="" className="absolute left-2 top-6" />
           <input
             type="text"
             placeholder="search"
-            className="px-8 py-4 bg-gray-200 border-2 rounded-md border-solid border-gray-200"
+            onChange={(e)=>setUserName(e.target.value)}
+            className="px-8 py-4 bg-gray-200 border-2 rounded-md border-solid border-gray-200 "
           />
-        </div>
+        </div> */}
 
-        <div className="flex h-6 space-x-4 ">
+        <div className="flex h-6 space-x-4">
           <Image src={homeActive} alt="" />
           <Image src={Vector} alt="" />
           <Image src={trends} alt="" />
@@ -82,9 +86,9 @@ const HomePage = () => {
       <div className="grid grid-cols-3 gap-8">
         <div></div>
         <div>
-          <Posts setData={setData} data={data} />
+          <Posts setData={setData} data={data} userName={userName} />
         </div>
-        <div>sidecontents</div>
+        <div></div>
       </div>
     </Layout>
   );
