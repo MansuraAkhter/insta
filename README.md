@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Description of project:
+1) view all the instram homepage posts
+2) add and view comment
+3) create new post using picture url such as https://cdn.pixabay.com/photo/2015/09/05/21/51/reading-925589_640.jpg
+4) view users posts
+5) view post details
+
 ## Getting Started
 
 First, run the development server:
